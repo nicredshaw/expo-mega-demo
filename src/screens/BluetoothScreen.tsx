@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Platform } from "react-native";
 import {
   BluetoothManager,
   connect,
@@ -11,6 +11,7 @@ import {
 import { DeviceList } from "../components/DeviceList";
 import { Layout, Text, Button, Card } from "@ui-kitten/components";
 import { isDeviceSupported } from "../bluetooth/BluetoothDevice";
+import { ManagePermissions } from '../bluetooth/PermissionsHelper'
 
 export default function BluetoothScreen() {
   React.useEffect(() => {
@@ -44,6 +45,10 @@ export default function BluetoothScreen() {
   React.useEffect(() => {
     isDeviceSupported(store.connectedDevice).then(setSupported);
   }, [store.connectedDevice]);
+
+  if (Platform.OS === 'android' && Platform.Version >= 23) {
+    ManagePermissions()
+  }
 
   return (
     <Layout style={styles.container} level="2">

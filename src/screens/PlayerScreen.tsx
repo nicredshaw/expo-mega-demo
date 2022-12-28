@@ -96,6 +96,8 @@ export default function PlayerScreen() {
   }, []);
 
   const openPicker = async () => {
+    const permissions = await MusicPicker.requestPermissionsAsync()
+    console.log(`Permissions: ${JSON.stringify(permissions)}`)
     const result = await MusicPicker.openMusicLibraryAsync({
       allowMultipleSelection: false,
       includeArtworkImage: false,
@@ -104,9 +106,9 @@ export default function PlayerScreen() {
     if (result.cancelled !== false || result.items.length !== 1) {
       return;
     }
+    console.log(`Song results: ${JSON.stringify(result)}`)
+    
     const [song] = result.items;
-    console.log("Song:", song);
-
     loadSound(song.uri);
     setTitle(prepareSongDisplayName(song));
   };
