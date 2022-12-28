@@ -18,5 +18,6 @@
     "statusBarItem.remoteBackground": "#61dafb",
     "statusBarItem.remoteForeground": "#15202b"
   },
-  "peacock.color": "#61dafb"
+  "peacock.color": "#61dafb",
+  "aws.telemetry": false
 }

@@ -6,7 +6,10 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "scheme": "demo",
-    "platforms": ["android", "ios"],
+    "platforms": [
+      "android",
+      "ios"
+    ],
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -18,7 +21,10 @@
     "jsEngine": "hermes",
     "ios": {
       "bundleIdentifier": "com.barthap.expomegademo",
-      "supportsTablet": false
+      "supportsTablet": false,
+      "infoPlist": {
+        "NSAppleMusicUsageDescription": "Allow $(PRODUCT_NAME) to access your music library"
+      }
     },
     "android": {
       "jsEngine": "jsc",
@@ -26,13 +32,30 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "BLUETOOTH",
+        "BLUETOOTH_ADMIN",
+        "BLUETOOTH_ADVERTISE",
+        "BLUETOOTH_SCAN",
+        "BLUETOOTH_CONNECT",
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_ADMIN"
+      ]
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "plugins": [
       "@config-plugins/react-native-ble-plx",
       "./patches/fix-entitlements.plugin",
       "./custom_native_modules/expo-music-picker/app.plugin"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "ea2ef501-9070-4ea5-bd46-eedbfcf4f1aa"
+      }
+    }
   }
 }

@@ -26,6 +26,6 @@ export async function sendCommandTo(device: Device, command: string) {
   await device.writeCharacteristicWithoutResponseForService(
     BT05_SERVICE_UUID_PREFIX,
     BT05_CHARACTERISTIC_UUID_PREFIX,
-    Buffer.from(`${command}\r\n`).toString("base64")
+    Buffer.from(`${command}\r`).toString("base64")
   );
 }
